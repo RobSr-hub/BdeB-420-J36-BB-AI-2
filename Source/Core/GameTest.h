@@ -1,5 +1,6 @@
 #pragma once
 #include "GameBase.h"
+#include "player.h"
 
 namespace Core
 {
@@ -12,5 +13,8 @@ namespace Core
 		void handleInput() override;
 		void update() override;
 		void render() override;
+
+	private:
+		Player _player;
 	};
 }

@@ -28,7 +28,7 @@ namespace Core
 
 	void GameTest::update()
 	{
-		
+		_player.update();
 	}
 
 	void GameTest::render()
@@ -37,6 +37,7 @@ namespace Core
 		{
 			ClearBackground(BLANK);
 			DrawFPS(20, 20);
+			_player.render();
 		}
 		EndDrawing();
 	}

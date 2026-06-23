@@ -1,10 +1,11 @@
 #pragma once
 #include "Node.h"
+#include <vector>
 
 
 namespace BehaviourTree
 {
-	class CompositeNode : Node
+	class CompositeNode : public Node
 	{
 	public:
 		virtual ~CompositeNode()
@@ -17,6 +18,6 @@ namespace BehaviourTree
 
 	protected:
 		std::vector<Node*> _nodes;
-		CompositeNode() override = default;
+		CompositeNode() = default;
 	};
 }

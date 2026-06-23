@@ -1,11 +1,12 @@
 #pragma once
 #include "GameBase.h"
-#include "player.h"
+#include "Player.h"
 
 namespace Core
 {
 	class GameTest : public GameBase
 	{
+
 	public:
 		GameTest();
 		~GameTest() override;

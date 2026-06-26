@@ -1,6 +1,6 @@
 #pragma once
 #include <cmath>
-#include <raylib/>
+#include <raylib.h>
 #include "Node.h"
 
 namespace BehaviourTree
@@ -11,7 +11,7 @@ namespace BehaviourTree
 		Node* _rootNode = nullptr;
 
 	public:
-		BehaciourTree() = default;
+		BehaviourTree() = default;
 		~BehaviourTree() = default;
 
 		NodeState tick() const

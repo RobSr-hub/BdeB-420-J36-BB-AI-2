@@ -28,7 +28,8 @@ namespace Core
 
 	void GameTest::update()
 	{
-		_player.update();
+		if (_tree.isComplete())
+			_tree.tick();
 	}
 
 	void GameTest::render()

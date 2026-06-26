@@ -8,7 +8,7 @@ namespace BehaviourTree
 	public:
 		NodeState tick() override
 		{
-			Core::log("DummySuccess Leaf");
+			//Core::log("DummySuccess Leaf");
 				return NodeState::SUCCESS;
 		}
 	};
@@ -18,7 +18,7 @@ namespace BehaviourTree
 	public:
 		NodeState tick() override
 		{
-			Core::log("DummyFail Leaf");
+			//Core::log("DummyFail Leaf");
 			return NodeState::FAILURE;
 		}
 	};
@@ -28,7 +28,7 @@ namespace BehaviourTree
 	public:
 		NodeState tick() override
 		{
-			Core::log("DummyRunning Leaf");
+			//Core::log("DummyRunning Leaf");
 			return NodeState::RUNNING;
 		}
 	};

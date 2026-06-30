@@ -31,17 +31,32 @@ namespace BehaviourTree
 			bt->SetRootNode(sn);
 		}
 
-		static BehaviourTree TestComposites()
+		static BehaviourTree* TestSequences()
 		{
 			auto bt = new BehaviourTree();
-			auto sln = new Selector();
-			auto sqn = new Sequence();
 
-			sqn->add(new DummySuccess());
-			sqn->add(sln);
-			sqn->add(new DummySuccess());
+			auto sn = new Sequence();
+			sn->add(new DummyWriteData());
+			sn->add(new DummyReadData());
+			sn->add(new DummySuccess());
 
-			bt->SetRootNode(sqn);
+			bt->SetRootNode(sn);
+
+			return bt;
+		}
+
+		static BehaviourTree* TestBlackBoard()
+		{
+			auto bt = new BehaviourTree();
+
+			auto sn = new Sequence();
+			sn->add(new DummyWriteData());
+			sn->add(new DummyReadData());
+			sn->add(new DummySuccess());
+
+			bt->SetRootNode(sn);
+		
+			return bt;
 		}
 	};
 

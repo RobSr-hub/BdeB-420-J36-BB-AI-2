@@ -1,4 +1,5 @@
 #pragma once
+
 namespace Core
 {
     using uchar = unsigned char;
@@ -6,6 +7,9 @@ namespace Core
     using ulong = unsigned long;
     using Size = size_t;
 
-    void log(const char*);
+    void log(const char* msg);
+    
+
+
 }
 

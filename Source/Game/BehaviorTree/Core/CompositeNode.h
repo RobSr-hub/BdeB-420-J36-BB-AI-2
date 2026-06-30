@@ -11,9 +11,7 @@ namespace BehaviourTree
 		virtual ~CompositeNode()
 		{
 			for (Node* node : _nodes)
-			{
 				delete node;
-			}
 		}
 
 		void add(Node* node)

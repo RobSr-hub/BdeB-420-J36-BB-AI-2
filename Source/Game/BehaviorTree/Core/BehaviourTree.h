@@ -14,6 +14,7 @@ namespace BehaviourTree
 		bool _complete = false;
 
 		BlackBoard _blackBoard;
+		NodeState treeState;
 
 	public:
 		BehaviourTree()
@@ -36,13 +37,14 @@ namespace BehaviourTree
 
 		NodeState tick()
 		{
-			_complete = true;
+			if (!_rootNode)
+				return NodeState::FAILURE;
 
-			if (_rootNode)
-				return _rootNode->tick(_blackBoard);
+			NodeState state = _rootNode->tick(_blackBoard);
+			_complete = state == NodeState::SUCCESS || state == NodeState::FAILURE;
 
-			
-			return NodeState::FAILURE;
+			treeState = _rootNode->tick(_blackBoard);
+		return treeState;
 		}
 
 		bool isComplete()

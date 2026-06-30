@@ -53,6 +53,10 @@ namespace BehaviourTree
 		NodeState tick( BlackBoard& bb) override
 		{
 			auto data = bb.get<bool>("TestData", false);
+			if (data)
+				Core::log(" Get TestData from BB SUCCESS");
+			else
+				Core::log("FAILED to get TestData from BB");
 			Core::log(" Get TestData from BB");
 			return NodeState::SUCCESS;
 		}

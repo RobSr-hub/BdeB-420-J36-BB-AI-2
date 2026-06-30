@@ -12,7 +12,7 @@ namespace Core
 {
 	class GameTest : public GameBase
 	{
-		BehaviourTree::BehaviourTree _tree;
+		BehaviourTree::BehaviourTree* _tree;
 
 	public:
 		GameTest();

@@ -1,11 +1,12 @@
 #pragma once
 #include "../../Core/Globals.h"
 #include "../../Source/Game/BehaviorTree/Core/CompositeNode.h"
+#include "Core/CompositeNode.h"
 #include "Core/Node.h"
 
 namespace BehaviourTree
 {
-	class Sequence : public BehaviourTree::CompositeNode
+	class Sequence : public CompositeNode
 	{
 	public:
 		NodeState tick(const BlackBoard& bb) override
@@ -13,8 +14,9 @@ namespace BehaviourTree
 			Core::log("Sequence");
 			for (auto node : _nodes)
 			{
-				if (node->tick(bb) == NodeState::FAILURE)
-					return NodeState::FAILURE;
+				NodeState state = node->tick(bb);
+				if (node->tick(bb) != NodeState::SUCCESS)
+					return state;
 			}
 
 			return NodeState::SUCCESS;

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ActionLeaves.h"
 #include "Core/BehaviourTree.h"
 
 namespace BehaviourTree
@@ -13,7 +14,7 @@ namespace BehaviourTree
 
 			auto sn = new Sequence();
 			sn->add(new DummySuccess());
-			sn->add(new DummySuccess());
+			sn->add(new DummyFail());
 			sn->add(new DummySuccess());
 
 			bt->SetRootNode(sn);
@@ -64,8 +65,42 @@ namespace BehaviourTree
 		static BehaviourTree* TestRunningNode()
 		{
 			auto bt = new BehaviourTree();
+			auto sn = new Selector();
+			sn->add(new DummyFail());
+			sn->add(new DummyRunning());
+			bt->SetRootNode(sn);
 
-			auto sn (new DummyRunning());
+			return bt;
+		}
+	
+		static BehaviourTree* TestRepeater()
+		{
+			auto bt = new BehaviourTree();
+
+			auto sn = new Sequence();
+			auto repeater = new Game::Repeater(5);
+			sn->add(new DummySuccess());
+			sn->add(repeater);
+			sn->add(new DummySuccess());
+			sn->add(repeater);
+
+			bt->SetRootNode(sn);
+
+			return bt;
+		}
+
+		static BehaviourTree* TestDelay()
+		{
+			auto bt = new BehaviourTree();
+
+			auto sn = new Sequence();
+			auto delay = new Game::Delay(3);
+
+			
+			sn->add(delay);
+			sn->add(new DummySuccess());
+			sn->add(delay);
+			sn->add(new DummySuccess());
 
 			bt->SetRootNode(sn);
 

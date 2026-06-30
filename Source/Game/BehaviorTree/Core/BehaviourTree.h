@@ -44,7 +44,7 @@ namespace BehaviourTree
 			_complete = state == NodeState::SUCCESS || state == NodeState::FAILURE;
 
 			treeState = _rootNode->tick(_blackBoard);
-		return treeState;
+		return state;
 		}
 
 		bool isComplete()

@@ -13,7 +13,7 @@ namespace BehaviourTree
 
 			auto sn = new Sequence();
 			sn->add(new DummySuccess());
-			sn->add(new DummyFail());
+			sn->add(new DummySuccess());
 			sn->add(new DummySuccess());
 
 			bt->SetRootNode(sn);
@@ -24,11 +24,13 @@ namespace BehaviourTree
 			auto bt = new BehaviourTree();
 
 			auto sn = new Sequence();
-			sn->add(new DummySuccess());
 			sn->add(new DummyFail());
+			sn->add(new DummySuccess());
 			sn->add(new DummyFail());
 
 			bt->SetRootNode(sn);
+
+			return bt;
 		}
 
 		static BehaviourTree* TestSequences()
@@ -56,6 +58,17 @@ namespace BehaviourTree
 
 			bt->SetRootNode(sn);
 		
+			return bt;
+		}
+
+		static BehaviourTree* TestRunningNode()
+		{
+			auto bt = new BehaviourTree();
+
+			auto sn (new DummyRunning());
+
+			bt->SetRootNode(sn);
+
 			return bt;
 		}
 	};

@@ -12,7 +12,7 @@ namespace Core
 		InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE);
 		SetTargetFPS(FPS);
 
-		_tree = BehaviourTree::Builders::TestBlackBoard();
+		_tree = BehaviourTree::Builders::TestRunningNode();
 		_loop = true;
 	}
 

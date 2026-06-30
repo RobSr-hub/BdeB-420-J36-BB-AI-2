@@ -14,7 +14,7 @@ namespace BehaviourTree
 		bool _complete = false;
 
 		BlackBoard _blackBoard;
-		NodeState treeState;
+		NodeState treeState = NodeState::RUNNING;
 
 	public:
 		BehaviourTree()

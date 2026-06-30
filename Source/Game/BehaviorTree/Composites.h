@@ -15,7 +15,7 @@ namespace BehaviourTree
 			for (auto node : _nodes)
 			{
 				NodeState state = node->tick(bb);
-				if (node->tick(bb) != NodeState::SUCCESS)
+				if (state != NodeState::SUCCESS)
 					return state;
 			}
 
@@ -31,8 +31,9 @@ namespace BehaviourTree
 
 			for (auto node : _nodes)
 			{
-				if (node->tick() == NodeState::SUCCESS)
-					return NodeState::SUCCESS;
+				NodeState state = node->tick(bb);
+				if (state != NodeState::FAILURE)
+					return state;
 			}
 
 			return NodeState::FAILURE;

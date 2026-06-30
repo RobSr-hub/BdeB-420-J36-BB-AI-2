@@ -2,6 +2,8 @@
 
 namespace BehaviourTree
 {
+	class BlackBoard;
+
 	enum class NodeState
 	{
 		SUCCESS,
@@ -13,7 +15,7 @@ namespace BehaviourTree
 	{
 	public:
 		virtual ~Node() = default;
-		virtual NodeState tick() = 0;
+		virtual NodeState tick( BlackBoard& bb) = 0;
 
 	protected:
 		Node() = default;

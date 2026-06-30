@@ -3,6 +3,11 @@
 #include "Player.h"
 #include "../Game/BehaviorTree/Core/BehaviourTree.h"
 
+namespace BehaviourTree
+{
+	class BehaviourTree;
+}
+
 namespace Core
 {
 	class GameTest : public GameBase

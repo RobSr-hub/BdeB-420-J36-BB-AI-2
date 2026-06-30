@@ -1,6 +1,7 @@
 #include "GameTest.h"
 
 #include <raylib.h>
+#include "../Game/BehaviorTree/Builder.h"
 
 namespace Core
 {
@@ -8,6 +9,8 @@ namespace Core
 	{
 		InitWindow(720, 480, "GameTest");
 		SetTargetFPS(30);
+
+		//_tree = BehaviourTree::Builders::TestSequence();
 	}
 
 	GameTest::~GameTest()
@@ -28,8 +31,8 @@ namespace Core
 
 	void GameTest::update()
 	{
-		if (_tree.isComplete())
-			_tree.tick();
+		_tree.tick();
+			
 	}
 
 	void GameTest::render()

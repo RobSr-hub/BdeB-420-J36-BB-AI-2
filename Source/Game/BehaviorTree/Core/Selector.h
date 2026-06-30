@@ -1,12 +1,11 @@
 #pragma once
-
 #include "CompositeNode.h"
 
 namespace BehaviourTree
 {
-	class Sequence : public CompositeNode
+	class Selector : public CompositeNode
 	{
 	public:
-		NodeState tick( BlackBoard& bb) override;
+		NodeState tick( BlackBoard& bb);
 	};
 }

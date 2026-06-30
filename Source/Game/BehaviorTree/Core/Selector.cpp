@@ -1,8 +1,8 @@
-#include "Sequence.h"
+#include "Selector.h"
 
 namespace BehaviourTree
 {
-	NodeState Sequence::tick( BlackBoard& bb)
+	NodeState Selector::tick( BlackBoard& bb)
 	{
 		for (Node* child : _nodes)
 		{
@@ -13,7 +13,6 @@ namespace BehaviourTree
 
 			if (result == NodeState::RUNNING)
 				return NodeState::RUNNING;
-
 		}
 
 		return NodeState::SUCCESS;

@@ -1,14 +1,16 @@
 #pragma once
 #include "Core/LeafNode.h"
+#include "Core/BlackBoard.h"
+#include "../../Core/Globals.h"
 
 namespace BehaviourTree
 {
 	class DummySuccess : public LeafNode
 	{
 	public:
-		NodeState tick() override
+		NodeState tick( BlackBoard& bb) override
 		{
-			//Core::log("DummySuccess Leaf");
+			Core::log("DummySuccess Leaf");
 				return NodeState::SUCCESS;
 		}
 	};
@@ -16,9 +18,9 @@ namespace BehaviourTree
 	class DummyFail : public LeafNode
 	{
 	public:
-		NodeState tick() override
+		NodeState tick( BlackBoard& bb) override
 		{
-			//Core::log("DummyFail Leaf");
+			Core::log("DummyFail Leaf");
 			return NodeState::FAILURE;
 		}
 	};
@@ -26,10 +28,33 @@ namespace BehaviourTree
 	class DummyRunning : public LeafNode
 	{
 	public:
-		NodeState tick() override
+		NodeState tick( BlackBoard& bb) override
 		{
-			//Core::log("DummyRunning Leaf");
+			Core::log("DummyRunning Leaf");
 			return NodeState::RUNNING;
+		}
+	};
+
+	class DummyWriteData : public LeafNode
+	{
+	public:
+		NodeState tick( BlackBoard& bb) override
+		{
+			Core::log("DummyWriteData Leaf");
+			bb.set<bool>("TestData", true);
+			Core::log(" Add TestData to BB");
+			return NodeState::SUCCESS;
+		}
+	};
+
+	class DummyReadData : public LeafNode
+	{
+	public:
+		NodeState tick( BlackBoard& bb) override
+		{
+			auto data = bb.get<bool>("TestData", false);
+			Core::log(" Get TestData from BB");
+			return NodeState::SUCCESS;
 		}
 	};
 }

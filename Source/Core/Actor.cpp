@@ -28,9 +28,11 @@ namespace Core
 	{
 		_x = x;
 		_y = y;
+		_deleteMe = false;
+
 	}
 
-	void Actor::update()
+	void Actor::move()
 	{
 		float dt = GetFrameTime();
 
@@ -39,6 +41,11 @@ namespace Core
 
 		_x += dt * _vx;
 		_y += dt * _vy;
+	}
+
+	void Actor::update()
+	{
+		move();
 	}
 
 	void Actor::render() const

@@ -10,8 +10,14 @@ namespace Core
 		virtual ~Actor() = default;
 
 		virtual void init(double x, double y);
+		void move();
 		virtual void update();
 		virtual void render() const;
+
+		void ProcessCollision();
+
+		bool shouldDelete() const;
+
 
 	protected:
 		double _x;
@@ -26,5 +32,6 @@ namespace Core
 		double _colorG;
 		double _colorB;
 		double _colorA;
+		bool _deleteMe;
 	};
 }
